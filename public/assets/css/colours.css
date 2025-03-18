@@ -1,0 +1,92 @@
+:root {
+    /* Default UI */
+    --colour-text:                          #000000;
+
+    /* Basic Colours */
+    --colour-yellow-basic:                  #d56631;
+    --colour-yellow-backer:                 #ffe9a6;
+    --colour-yellow-hovered:                #ffd771;
+
+    /* Interaction Type Colours */
+    --colour-interaction-warning-basic:     #ff4d4d;
+    --colour-interaction-warning-backer:    #ffd6d6;
+    --colour-interaction-warning-hover:     #ffc5c5;
+
+    --colour-interaction-accept-basic:      #46834f;
+    --colour-interaction-accept-backer:     #cffbd5;
+    --colour-interaction-accept-hover:      #c0f8c7;
+
+    --colour-interaction-accent-basic:      #109bf1;
+    --colour-interaction-accent-backer:     #cfeefb;
+    --colour-interaction-accent-hover:      #b0e2ff;
+
+    --colour-interaction-cancel-basic:      #ccc;
+    --colour-interaction-cancel-backer:     transparent;
+    --colour-interaction-cancel-hover:      #e9e9e9;
+
+    --colour-interaction-empty-basic:      transparent;
+    --colour-interaction-empty-backer:     transparent;
+    --colour-interaction-empty-hover:      #e9e9e9;
+}
+
+.yellow {
+    background-color:   var(--colour-yellow-backer) !important;
+    outline-color:      var(--colour-yellow-basic) !important;
+    color:              var(--colour-yellow-basic) !important;
+}
+
+.yellow:hover {
+    background-color:   var(--colour-yellow-hovered) !important;
+}
+
+.orange { background-color: #FFBA4B; }
+
+.warning {
+    background-color:   var(--colour-interaction-warning-backer) !important;
+    outline-color:      var(--colour-interaction-warning-basic) !important;
+    color:              var(--colour-interaction-warning-basic) !important;
+}
+
+.warning:hover {
+    background-color:   var(--colour-interaction-warning-hover) !important;
+}
+
+.accent {
+    background-color:   var(--colour-interaction-accent-backer) !important;
+    outline-color:      var(--colour-interaction-accent-basic) !important;
+    color:              var(--colour-interaction-accent-basic) !important;
+}
+
+.accent:hover {
+    background-color:   var(--colour-interaction-accent-hover) !important;
+}
+
+.accept {
+    background-color:   var(--colour-interaction-accept-backer) !important;
+    outline-color:      var(--colour-interaction-accept-basic) !important;
+    color:              var(--colour-interaction-accept-basic) !important;
+}
+
+.accept:hover {
+    background-color:   var(--colour-interaction-accept-hover) !important;
+}
+
+.cancel {
+    background-color:   var(--colour-interaction-cancel-backer) !important;
+    outline-color:      var(--colour-interaction-cancel-basic) !important;
+    color:              var(--colour-text) !important;
+}
+
+.cancel:hover {
+    background-color:   var(--colour-interaction-cancel-hover) !important;
+}
+
+.empty {
+    background-color:   var(--colour-interaction-empty-backer) !important;
+    outline-color:      var(--colour-interaction-empty-basic) !important;
+    color:              var(--colour-text) !important;
+}
+
+.empty:hover {
+    background-color:   var(--colour-interaction-empty-hover) !important;
+}
