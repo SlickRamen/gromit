@@ -1,0 +1,138 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.page {
+    min-height: 100vh;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.layout {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    flex-grow: 1;
+    max-width: 1000px;
+}
+
+.lay-column {
+    display:flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.lay-column.zero    { flex: 0; }
+.lay-column.one     { flex: 1; }
+.lay-column.two     { flex: 2; }
+.lay-column.three   { flex: 3; }
+.lay-column.four    { flex: 4; }
+.lay-column.five    { flex: 5; }
+.lay-column.six     { flex: 6; }
+.lay-column.seven   { flex: 7; }
+.lay-column.eight   { flex: 8; }
+.lay-column.nine    { flex: 9; }
+.lay-column.ten     { flex: 10; }
+
+.title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0.75rem 0 0.5rem 0;
+}
+
+.heading {
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 0.5rem 0 0.1rem 0;
+}
+
+.subheading {
+    font-size: 1rem;
+    font-style: italic;
+    opacity: 50%;
+}
+
+.sidebar {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    padding: 1rem;
+    min-width: 250px;
+    background-color: #f0f0f0;
+}
+
+.nav-block {
+    display: flex;
+    padding: 1rem;
+    width: 100%;
+    flex-direction: column;
+}
+
+.nav-content {
+    display: flex;
+    padding: 1rem;
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 0.5rem;
+}
+
+hr {
+    
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #e1e1e1;
+    margin: 0;
+    padding: 0;
+}
+
+.bold-button {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    outline: 1px solid #e1e1e1;
+    padding: 0.5rem 1rem;
+    border-radius: 2px;
+    font-size: 1rem;
+}
+
+.bold-button.fit {
+    width: fit-content;
+    padding: 0.5rem 2rem;
+}
+
+.bold-button:hover,
+.bold-button.selected {
+    cursor: pointer;
+    background: linear-gradient(#f4f1ff, #c2baeb);
+    outline-color: #c2baeb;
+}
+
+.search {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    outline: 1px solid #e1e1e1;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 2px;
+    font-size: 1rem;
+}
