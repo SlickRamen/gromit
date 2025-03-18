@@ -1,9 +1,23 @@
+@font-face {
+    font-family: "Inter";
+    src: url("../fnt/Inter.ttf") format("truetype");
+}
+
+
 * {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Inter", Arial, sans-serif;
+    font-weight: normal;
+    font-style: normal;
     box-sizing: border-box;
     padding: 0;
     margin: 0;
 }
+
+.logo {
+    width: 50px;
+    height: auto;
+}
+
 
 .page {
     min-height: 100vh;
@@ -19,7 +33,7 @@
     width: 100%;
     height: 100%;
     flex-grow: 1;
-    max-width: 1000px;
+    /*max-width: 1000px;*/
 }
 
 .lay-column {
@@ -41,13 +55,13 @@
 .lay-column.ten     { flex: 10; }
 
 .title {
-    font-size: 2rem;
+    font-size: 3rem;
     font-weight: bold;
     margin: 0.75rem 0 0.5rem 0;
 }
 
 .heading {
-    font-size: 1rem;
+    font-size: 1.5rem;
     font-weight: bold;
     margin: 0.5rem 0 0.1rem 0;
 }
@@ -63,9 +77,8 @@
     width: 100%;
     height: 100%;
     flex-direction: column;
-    padding: 1rem;
     min-width: 250px;
-    background-color: #f0f0f0;
+    background-color: var(--colour-ui-backer-light);
 }
 
 .nav-block {
@@ -77,7 +90,6 @@
 
 .nav-content {
     display: flex;
-    padding: 1rem;
     flex-direction: column;
     width: 100%;
     gap: 1rem;
@@ -90,12 +102,15 @@
     gap: 0.5rem;
 }
 
+.padded-container {
+    padding: 2rem 2rem 0 2rem;
+}
+
 hr {
-    
     display: block;
     height: 1px;
     border: 0;
-    border-top: 1px solid #e1e1e1;
+    border-top: 1px solid var(--colour-ui-backer-border);
     margin: 0;
     padding: 0;
 }
@@ -106,22 +121,17 @@ hr {
     width: 100%;
     justify-content: center;
     align-items: center;
-    outline: 1px solid #e1e1e1;
+    outline: 1px solid var(--colour-ui-backer-medium);
     padding: 0.5rem 1rem;
-    border-radius: 2px;
+    border-radius: 0.25rem;
     font-size: 1rem;
+
+    cursor: pointer;
 }
 
 .bold-button.fit {
     width: fit-content;
     padding: 0.5rem 2rem;
-}
-
-.bold-button:hover,
-.bold-button.selected {
-    cursor: pointer;
-    background: linear-gradient(#f4f1ff, #c2baeb);
-    outline-color: #c2baeb;
 }
 
 .search {
@@ -130,9 +140,9 @@ hr {
     width: 100%;
     justify-content: center;
     align-items: center;
-    outline: 1px solid #e1e1e1;
+    outline: 1px solid var(--colour-ui-backer-medium);
     border: none;
     padding: 0.5rem 1rem;
-    border-radius: 2px;
+    border-radius: 0.25rem;
     font-size: 1rem;
 }

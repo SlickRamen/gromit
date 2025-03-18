@@ -1,0 +1,121 @@
+
+.project-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    padding: 1rem;
+    min-width: 250px;
+    background-color: #ffffff;
+
+    border-left: 1px solid var(--colour-ui-backer-border);
+    border-right: 1px solid var(--colour-ui-backer-border);
+}
+
+.tabs-block {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    gap: 7px;
+}
+
+.button-tray {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.tab-button {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+}
+
+/* Project on sidebar */
+.sidebar-project-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+}
+
+.project-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    user-select: none;
+    flex-grow: 1
+}
+
+.package {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    position: relative;
+}
+
+.package::before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 2.75rem;
+    height: 100%;
+    width: 1px;
+    top: -0.75rem;
+    background-color: var(--colour-ui-backer-dark);
+    z-index: 1;
+}
+
+.project-content,
+.project-item {
+    position: relative;
+    padding: 0.5rem 0.5rem 0.5rem 4rem;
+    cursor: pointer;
+    width: 100%;
+}
+
+.project-item {
+    padding-left: 6rem;
+}
+
+.project-content:hover,
+.project-item:hover {
+    background-color: var(--colour-ui-backer-medium);
+}
+
+.project-content::before {
+    position: absolute;
+    left: 2.5rem;
+    content: "›";
+    display: inline;
+    color: var(--colour-ui-backer-dark);
+}
+
+.project-content.active::before {
+    position: absolute;
+    left: 2.5rem;
+    content: "o";
+    display: inline;
+    color: var(--colour-ui-backer-dark);
+}
+
+.project-item::before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 4rem;
+    background-image: url("../img/grom1.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 50%;
+    height: 50%;
+    top: 25%;
+
+}

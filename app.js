@@ -1,16 +1,30 @@
-var express = require('express');
-var app = express();
+const { app, BrowserWindow } = require('electron');
+const path = require('path');
+require('ejs-electron'); // Automatically enables EJS rendering in Electron
 
-// set the view engine to ejs
-app.set('view engine', 'ejs');
-app.use('/public', express.static('public'));
+let mainWindow;
 
-// use res.render to load up an ejs view file
+app.whenReady().then(() => {
+  mainWindow = new BrowserWindow({
+    width: 800,
+    height: 600,
+    minWidth: 800,
+    minHeight: 600,
+    webPreferences: {
+      nodeIntegration: true
+    }
+  });
 
-// index page
-app.get('/', function(req, res) {
-  res.render('pages/index');
+  // Correct way to load an EJS file in Electron
+  mainWindow.loadFile(path.join(__dirname, 'views', 'pages', 'index.ejs'));
+
+  mainWindow.on('closed', () => {
+    mainWindow = null;
+  });
 });
 
-app.listen(5000);
-console.log('Server is listening on port 5000');
+app.on('window-all-closed', () => {
+  if (process.platform !== 'darwin') {
+    app.quit();
+  }
+});

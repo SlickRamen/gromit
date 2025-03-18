@@ -1,6 +1,6 @@
 :root {
     /* Default UI */
-    --colour-text:                          #000000;
+    --colour-text: #000000;
 
     /* Basic Colours */
     --colour-yellow-basic:                  #d56631;
@@ -16,17 +16,22 @@
     --colour-interaction-accept-backer:     #cffbd5;
     --colour-interaction-accept-hover:      #c0f8c7;
 
-    --colour-interaction-accent-basic:      #109bf1;
-    --colour-interaction-accent-backer:     #cfeefb;
-    --colour-interaction-accent-hover:      #b0e2ff;
+    --colour-interaction-accent-basic:      #46834f;
+    --colour-interaction-accent-backer:     #cffbd5;
+    --colour-interaction-accent-hover:      #c0f8c7;
 
     --colour-interaction-cancel-basic:      #ccc;
     --colour-interaction-cancel-backer:     transparent;
-    --colour-interaction-cancel-hover:      #e9e9e9;
+    --colour-interaction-cancel-hover: #e1e1e1;
 
     --colour-interaction-empty-basic:      transparent;
     --colour-interaction-empty-backer:     transparent;
     --colour-interaction-empty-hover:      #e9e9e9;
+
+    --colour-ui-backer-light: #f4f4f4;
+    --colour-ui-backer-medium: #e1e1e1;
+    --colour-ui-backer-border: #ccc;
+    --colour-ui-backer-dark: #b5b5b5;
 }
 
 .yellow {
