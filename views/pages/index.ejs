@@ -7,14 +7,51 @@
   
 <div class="page">
   <div class="layout">
-    <div class="lay-column three" style="min-width: 250px; max-width: 250px">
+    <div class="lay-column three" style="min-width: 200px; max-width: 200px">
       <%- include('../partials/sidebar'); %>
     </div>
     <div class="lay-column seven">
-      <%- include('../partials/project-container'); %>
+      <div class="main-content">
+        <div class="main-content-scroll">
+          <%- include('../partials/info-container'); %>
+          <%- include('../partials/project-container'); %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+
+<div class="modal" id="projectModal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <form id="addProjectForm">
+      <div class="modal-header">
+        <span class="modal-title">create a new gromit project</span>
+        <span class="close" onclick="closeModal(this)">&times;</span>
+      </div>
+      <div class="modal-body">
+        <label for="name" class="modal-label">project name</label><br>
+        <input type="text" class="text-box" id="name" name="name"><br>
+      </div>
+      <div class="modal-footer">
+        <button class="bold-button accent" type="submit" id="modalUploadProfileImageButton">go</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  function closeModal(btn) {
+    const modalNearest = btn.closest('.modal');
+
+    modalNearest.style.display='none';
+  }
+</script>
+
+
+<script src="../../public/js/project-manager.js"></script>
+
+<script src="../../public/js/project-dropdown-control.js"></script>
 
 </body>
 </html>

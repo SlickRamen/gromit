@@ -2,14 +2,12 @@
 .project-container {
     display: flex;
     width: 100%;
-    height: 100%;
+    flex-grow: 1;
     flex-direction: column;
     padding: 1rem;
     min-width: 250px;
     background-color: #ffffff;
 
-    border-left: 1px solid var(--colour-ui-backer-border);
-    border-right: 1px solid var(--colour-ui-backer-border);
 }
 
 .page-content {
@@ -18,6 +16,7 @@
     width: 100%;
     gap: 1rem;
 }
+
 
 .tabs-block {
     display: flex;
@@ -63,7 +62,7 @@
 .package {
     display: flex;
     flex-direction: column;
-    height: 100%;
+    flex-grow: 1;
 
     position: relative;
 }
@@ -90,11 +89,19 @@
 
 .project-item {
     padding-left: 5rem;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: -2rem center;
+    background-origin: content-box;
 }
 
 .project-content:hover,
 .project-item:hover {
     background-color: var(--colour-ui-backer-medium);
+}
+
+.project-wrapper.selected > .project-content {
+    background-color: var(--colour-ui-backer-border);
 }
 
 .project-content::before {
@@ -113,16 +120,30 @@
     color: var(--colour-ui-backer-dark);
 }
 
-.project-item::before {
-    content: "";
-    display: block;
-    position: absolute;
-    left: 3rem;
-    background-image: url("../img/grom1.svg");
-    background-size: contain;
-    background-repeat: no-repeat;
-    width: 50%;
-    height: 50%;
-    top: 25%;
+@media (max-width: 600px) {
+    .tabs-block {
+        flex-direction: column;
+    }
 
+    .bold-button.fit {
+        width: 100%;
+    }
+}
+
+.icon-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.icon {
+    width: 4rem;
+    height: 4rem;
+    padding: 0.25rem;
+    border-radius: 0.25rem;
+}
+
+.icon:hover {
+    background-color: var(--colour-interaction-accent-backer);
+    cursor: pointer;
 }

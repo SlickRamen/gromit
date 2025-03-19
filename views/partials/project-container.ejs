@@ -1,8 +1,9 @@
 
-<div class="project-container" style="padding-left: 2rem">
+<div class="project-container" id="projectPane" style="display: none; padding-left: 2rem">
   <div class="nav-block">
     <div class="lay-column three" style="min-width: 300px; max-width: 300px">
-      <span class="title">a project</span>
+      <span class="title" id="projectTitle">a project</span>
+      <span class="title" id="projectId" style="display: none"></span>
       <span class="subheading">ver 0.0.1</span>
     </div>
   </div>
@@ -18,12 +19,16 @@
     <span class="heading">a project > glyphs</span>
 
     <div class="button-tray">
-      <a class="bold-button fit accent">add glyph</a>
+      <a class="bold-button fit accent" onclick="uploadIcon()">add glyph</a>
       <a class="bold-button fit cancel">import existing</a>
     </div>
 
-    <div class="container">
-      <span>no projects open</span>
-    </div>
+
+    <input type="file" id="iconUpload" accept=".svg" style="visibility: hidden">
+
+
+    <div id="iconGrid" class="icon-grid"></div>
+
+    <script src="../../public/js/project-icons.js"></script>
   </div>
 </div>

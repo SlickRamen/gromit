@@ -19,10 +19,22 @@ document.addEventListener("DOMContentLoaded", function() {
  */
 function toggleProject(projectElement, forceClose) {
     let items = projectElement.parentNode.querySelector('.package');
+    let projects = document.getElementsByClassName("project-wrapper");
+
+    if (!forceClose) {
+        Array.from(projects).forEach(project => {
+            project.classList.remove("selected");
+        });
+
+        projectElement.parentNode.classList.add("selected");
+
+        loadProjectDetails(projectElement.parentNode.getElementsByClassName("project-id-label")[0].textContent);
+    }
 
     if ((items.style.display === "none" || items.style.display === "") && !forceClose) {
         items.style.display = "flex";
         projectElement.classList.add("active");
+
     } else {
         items.style.display = "none";
         projectElement.classList.remove("active");
