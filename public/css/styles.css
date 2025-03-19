@@ -3,6 +3,17 @@
     src: url("../fnt/Inter.ttf") format("truetype");
 }
 
+/* width */
+::-webkit-scrollbar-thumb {
+    background-color: var(--colour-ui-backer-dark);
+    border-radius: 1rem;
+    border: 0.1rem solid transparent;
+    background-clip: padding-box;
+}
+
+::-webkit-scrollbar {
+    width: 0.5rem;
+}
 
 * {
     font-family: "Inter", Arial, sans-serif;
@@ -13,15 +24,9 @@
     margin: 0;
 }
 
-.logo {
-    width: 50px;
-    height: auto;
-}
-
-
 .page {
-    min-height: 100vh;
-    height: 100%;
+    height: 100vh;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -55,13 +60,13 @@
 .lay-column.ten     { flex: 10; }
 
 .title {
-    font-size: 3rem;
+    font-size: 2rem;
     font-weight: bold;
     margin: 0.75rem 0 0.5rem 0;
 }
 
 .heading {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-weight: bold;
     margin: 0.5rem 0 0.1rem 0;
 }
@@ -77,13 +82,12 @@
     width: 100%;
     height: 100%;
     flex-direction: column;
-    min-width: 250px;
     background-color: var(--colour-ui-backer-light);
 }
 
 .nav-block {
     display: flex;
-    padding: 1rem;
+    padding: 0 0 1rem 0;
     width: 100%;
     flex-direction: column;
 }
@@ -92,6 +96,8 @@
     display: flex;
     flex-direction: column;
     width: 100%;
+    flex-grow: 1;
+    overflow: hidden;
     gap: 1rem;
 }
 
@@ -103,7 +109,7 @@
 }
 
 .padded-container {
-    padding: 2rem 2rem 0 2rem;
+    padding: 1rem 1rem 0 1rem;
 }
 
 hr {
@@ -135,11 +141,7 @@ hr {
 }
 
 .search {
-    display: flex;
-    flex-direction: column;
     width: 100%;
-    justify-content: center;
-    align-items: center;
     outline: 1px solid var(--colour-ui-backer-medium);
     border: none;
     padding: 0.5rem 1rem;

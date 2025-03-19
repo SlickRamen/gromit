@@ -12,6 +12,13 @@
     border-right: 1px solid var(--colour-ui-backer-border);
 }
 
+.page-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+}
+
 .tabs-block {
     display: flex;
     width: 100%;
@@ -39,9 +46,9 @@
 /* Project on sidebar */
 .sidebar-project-container {
     display: flex;
-    width: 100%;
-    height: 100%;
     flex-direction: column;
+    overflow-y: auto; /* Enables vertical scrolling */
+    overflow-x: hidden; /* Hides horizontal scrolling */
 }
 
 .project-wrapper {
@@ -65,7 +72,7 @@
     content: "";
     display: block;
     position: absolute;
-    left: 2.75rem;
+    left: 1.75rem;
     height: 100%;
     width: 1px;
     top: -0.75rem;
@@ -76,13 +83,13 @@
 .project-content,
 .project-item {
     position: relative;
-    padding: 0.5rem 0.5rem 0.5rem 4rem;
+    padding: 0.5rem 0.5rem 0.5rem 3rem;
     cursor: pointer;
     width: 100%;
 }
 
 .project-item {
-    padding-left: 6rem;
+    padding-left: 5rem;
 }
 
 .project-content:hover,
@@ -92,7 +99,7 @@
 
 .project-content::before {
     position: absolute;
-    left: 2.5rem;
+    left: 1.5rem;
     content: "›";
     display: inline;
     color: var(--colour-ui-backer-dark);
@@ -100,7 +107,7 @@
 
 .project-content.active::before {
     position: absolute;
-    left: 2.5rem;
+    left: 1.5rem;
     content: "o";
     display: inline;
     color: var(--colour-ui-backer-dark);
@@ -110,7 +117,7 @@
     content: "";
     display: block;
     position: absolute;
-    left: 4rem;
+    left: 3rem;
     background-image: url("../img/grom1.svg");
     background-size: contain;
     background-repeat: no-repeat;
