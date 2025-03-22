@@ -19,16 +19,46 @@
     <span class="heading">a project > glyphs</span>
 
     <div class="button-tray">
-      <a class="bold-button fit accent" onclick="uploadIcon()">add glyph</a>
-      <a class="bold-button fit cancel">import existing</a>
+      <a class="bold-button fit accent" onclick="uploadIcons()">add glyph</a>
+      <a class="bold-button fit cancel" id="generateButton">generate font</a>
+      <a class="bold-button fit warning" id="status">status</a>
     </div>
 
 
-    <input type="file" id="iconUpload" accept=".svg" style="visibility: hidden">
+    <input type="file" multiple id="iconUpload" accept=".svg" style="visibility: hidden">
 
 
     <div id="iconGrid" class="icon-grid"></div>
 
     <script src="../../public/js/project-icons.js"></script>
+
+    <script>
+      document.getElementById("generateButton").addEventListener("click", async () => {
+        const projectId = document.getElementById("projectId").textContent;
+        if (!projectId) {
+          alert("Please enter a project ID!");
+          return;
+        }
+
+        document.getElementById("status").innerText = "Generating...";
+
+        try {
+          const response = await fetch("http://localhost:3000/generate-font", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ projectId: Number(projectId) }),
+          });
+
+          const result = await response.json();
+          if (result.success) {
+            document.getElementById("status").innerText = "✅ " + result.message;
+          } else {
+            document.getElementById("status").innerText = "❌ Error: " + result.error;
+          }
+        } catch (error) {
+          document.getElementById("status").innerText = "❌ Request failed.";
+        }
+      });
+    </script>
   </div>
 </div>

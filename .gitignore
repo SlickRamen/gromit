@@ -8,5 +8,7 @@
 /dataSources.local.xml
 
 node_modules/
+output/
+temp/
 
 projects.json

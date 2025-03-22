@@ -1,38 +1,54 @@
-async function uploadIcon() {
+async function uploadIcons() {
     const id = document.getElementById("projectId").textContent;
     const fileInput = document.getElementById("iconUpload");
 
-    // Wait for user to select a file
-    const file = await new Promise((resolve) => {
+    // Allow user to select multiple files
+    const files = await new Promise((resolve) => {
         fileInput.onchange = () => {
-            resolve(fileInput.files[0]);
+            // Convert FileList to an array
+            resolve([...fileInput.files]);
         };
         fileInput.click();
     });
 
-    if (!file) return alert("Select an SVG file first!");
+    if (!files.length) return alert("Select at least one SVG file!");
 
-    const reader = new FileReader();
+    const uploads = files.map(file => {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
 
-    reader.onload = async function(event) {
-        const base64Data = event.target.result;
+            reader.onload = async function(event) {
+                const base64Data = event.target.result;
 
-        let response = await fetch(`http://localhost:3000/projects/${id}/upload-icon`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ name: file.name, data: base64Data })
+                try {
+                    let response = await fetch(`http://localhost:3000/projects/${id}/upload-icon`, {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ name: file.name, data: base64Data })
+                    });
+
+                    if (response.ok) {
+                        resolve(await response.json());
+                    } else {
+                        reject("Upload failed for " + file.name);
+                    }
+                } catch (error) {
+                    reject(error);
+                }
+            };
+
+            reader.readAsDataURL(file);
         });
+    });
 
-        if (response.ok) {
-            const result = await response.json();
-            await loadIcons(id);
-        } else {
-            alert("Upload failed.");
-        }
-    };
-
-    reader.readAsDataURL(file);
+    try {
+        await Promise.all(uploads);
+        await loadIcons(id);
+    } catch (error) {
+        alert(error);
+    }
 }
+
 
 // Fetch & Display Icons
 async function loadIcons(id) {
