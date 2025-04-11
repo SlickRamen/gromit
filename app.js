@@ -30,9 +30,7 @@ if (!fs.existsSync(tempDir)) {
 
 // Function to generate the web font
 async function generateFont(projectId) {
-  const jsonFile = "projects.json"; // Update with your actual file
-
-  // Read and parse the JSON file
+  const jsonFile = "projects.json";
   const jsonData = JSON.parse(fs.readFileSync(jsonFile, "utf8"));
 
   // Find the project by ID
@@ -205,13 +203,44 @@ server.get("/projects/:id", (req, res) => {
 
   res.json(project);
 });
+server.delete("/projects/:id", (req, res) => {
+  let projects = loadProjects(); // Load projects from file
+  const project = projects.find(p => p.id == req.params.id);
+
+  if (!project) {
+    return res.status(404).json({ error: "Project not found" });
+  }
+
+  projects = projects.filter(p => p.id != req.params.id);
+
+  saveProjects(projects);
+
+  return res.status(200);
+});
 
 server.post("/projects", (req, res) => {
   let projects = loadProjects();
-  const newProject = { id: Date.now(), name: req.body.name, icons: [] };
-  projects.push(newProject);
+  let returnProject = null;
+
+  if (req.body.id && projects.find(p => p.id == req.body.id)) {
+    const projectIndex = projects.findIndex(p => p.id == req.body.id);
+    if (projectIndex !== -1) {
+      const existingProject = projects[projectIndex];
+      projects[projectIndex] = {
+        ...existingProject,
+        name: req.body.name || existingProject.name,
+        description: req.body.description || existingProject.description,
+      };
+      returnProject = projects[projectIndex];
+    }
+  } else {
+    const newProject = { id: Date.now(), name: req.body.name, icons: [] };
+    projects.push(newProject);
+    returnProject = newProject;
+  }
+
   saveProjects(projects);
-  res.json(newProject);
+  res.json(returnProject);
 });
 
 server.post("/projects/:id/upload-icon", (req, res) => {

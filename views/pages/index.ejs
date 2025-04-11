@@ -26,15 +26,58 @@
   <div class="modal-content">
     <form id="addProjectForm">
       <div class="modal-header">
-        <span class="modal-title">create a new gromit project</span>
+        <span class="modal-title">Create a new Gromit Project</span>
         <span class="close" onclick="closeModal(this)">&times;</span>
       </div>
       <div class="modal-body">
-        <label for="name" class="modal-label">project name</label><br>
-        <input type="text" class="text-box" id="name" name="name"><br>
+        <label for="name" class="modal-label">Project Name</label>
+        <input type="text" class="text-box" id="name" name="name"><br><br>
+        <label for="description" class="modal-label">Project Description</label>
+        <input type="text" class="text-box" id="description" name="description"><br><br>
       </div>
       <div class="modal-footer">
-        <button class="bold-button accent" type="submit" id="modalUploadProfileImageButton">go</button>
+        <button class="bold-button accent" type="submit">Create Project</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="modal" id="projectEditModal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <form id="editProjectForm">
+      <div class="modal-header">
+        <span class="modal-title">Edit existing Gromit Project</span>
+        <span class="close" onclick="closeModal(this)">&times;</span>
+      </div>
+      <div class="modal-body">
+        <input id="existingId" name="existingId" style="display: none">
+        <label for="editName" class="modal-label">Project Name</label>
+        <input type="text" class="text-box" id="editName" name="editName"><br><br>
+        <label for="editDescription" class="modal-label">Project Description</label>
+        <input type="text" class="text-box" id="editDescription" name="editDescription"><br><br>
+      </div>
+      <div class="modal-footer">
+        <button class="bold-button accent" type="submit">Update Project</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="modal" id="projectDeleteModal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <form id="deleteProjectForm">
+      <div class="modal-header">
+        <span class="modal-title">Delete Gromit Project</span>
+        <span class="close" onclick="closeModal(this)">&times;</span>
+      </div>
+      <div class="modal-body">
+        <input id="deleteId" name="deleteId" style="display: none">
+        Are you sure you want to delete this project?
+      </div>
+      <div class="modal-footer">
+        <button class="bold-button warning" type="submit">Delete Project</button>
       </div>
     </form>
   </div>

@@ -25,7 +25,7 @@
     padding: 0;
     margin: 0;
 
-    transition: background-color 0.2s;
+    transition: background-color 0.15s;
 }
 
 html {
@@ -79,7 +79,16 @@ html {
     align-items: center;
     font-size: 2rem;
     font-weight: bold;
-    margin: 0.75rem 0 0.5rem 0;
+    margin: 0.25rem 0 0.5rem 0;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    color: var(--colour-text);
+    text-decoration: none;
+}
+
+.title.selectable:hover {
+    background-color: var(--colour-ui-backer-medium);
+    cursor: pointer;
 }
 
 .heading {
