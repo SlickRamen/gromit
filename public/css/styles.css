@@ -1,3 +1,5 @@
+@import "../fnt/gromit-grom/gromit-grom.css";
+
 @font-face {
     font-family: "Inter";
     src: url("../fnt/Inter.ttf") format("truetype");
@@ -26,6 +28,10 @@
     transition: background-color 0.2s;
 }
 
+html {
+    background-color: var(--colour-ui-backer-light);
+}
+
 .page {
     height: 100vh;
     overflow: hidden;
@@ -41,6 +47,12 @@
     height: 100%;
     flex-grow: 1;
     /*max-width: 1000px;*/
+}
+
+.lay-row {
+    display:flex;
+    flex-direction: row;
+    flex: 1;
 }
 
 .lay-column {
@@ -62,6 +74,9 @@
 .lay-column.ten     { flex: 10; }
 
 .title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     font-size: 2rem;
     font-weight: bold;
     margin: 0.75rem 0 0.5rem 0;
@@ -69,8 +84,8 @@
 
 .heading {
     font-size: 1rem;
-    font-weight: bold;
-    margin: 0.5rem 0 0.1rem 0;
+    font-weight: normal;
+    color: var(--colour-ui-backer-dark);
 }
 
 .subheading {
@@ -138,7 +153,7 @@ hr {
 
 .bold-button {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     width: 100%;
     justify-content: center;
     align-items: center;
@@ -153,7 +168,25 @@ hr {
 
 .bold-button.fit {
     width: fit-content;
-    padding: 0.5rem 2rem;
+}
+
+.bold-button.spaced {
+    justify-content: space-between;
+}
+
+.options-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    outline: 1px solid var(--colour-ui-backer-medium);
+    padding: 0.25rem;
+    border-radius: 0.25rem;
+    font-size: 1.5rem;
+    border: none;
+    width: fit-content;
+
+    cursor: pointer;
 }
 
 .text-box {
@@ -163,6 +196,7 @@ hr {
     padding: 0.5rem 1rem;
     border-radius: 0.25rem;
     font-size: 1rem;
+    background-color: var(--colour-ui-backer-light);
 }
 
 .info-block {
@@ -175,10 +209,18 @@ hr {
 .info-link {
     color: var(--colour-text);
     text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
-.info-link:hover {
+.info-link:hover,
+.info-link:focus {
     color: var(--colour-interaction-accept-basic);
+}
+
+.info-link:hover > span,
+.info-link:focus    > span {
     text-decoration: underline;
 }
 

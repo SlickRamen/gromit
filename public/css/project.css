@@ -5,7 +5,7 @@
     flex-grow: 1;
     flex-direction: column;
     min-width: 250px;
-    background-color: #ffffff;
+    background-color: var(--colour-ui-backer-light);
 
     padding: 1rem 1rem 4rem;
 }
@@ -20,9 +20,11 @@
 
 .tabs-block {
     display: flex;
+    flex-wrap: wrap;
     width: 100%;
     flex-direction: row;
     gap: 7px;
+    flex-shrink: 0;
 }
 
 .button-tray {
@@ -76,7 +78,7 @@
     left: 1.75rem;
     height: 100%;
     width: 1px;
-    top: -0.75rem;
+    top: -0.5rem;
     background-color: var(--colour-ui-backer-dark);
     z-index: 1;
 }
@@ -95,6 +97,8 @@
     background-repeat: no-repeat;
     background-position: -2rem center;
     background-origin: content-box;
+
+    image-rendering: smooth;
 }
 
 .project-content:hover,
@@ -103,23 +107,35 @@
 }
 
 .project-wrapper.selected > .project-content {
-    background-color: var(--colour-ui-backer-border);
+    background-color: var(--colour-ui-backer-medium);
 }
 
 .project-content::before {
     content: "";
     position: absolute;
-    left: 1.5rem;
+    left: 1.2rem;
+    padding: 0.15rem;
+    mask-image: url("../img/close-arrow.svg");
+    width: 15px;
+    height: 15px;
+    mask-position: center;
+    mask-size: cover;
     display: inline;
-    color: var(--colour-ui-backer-dark);
+    background-color: var(--colour-ui-backer-dark);
 }
 
 .project-content.active::before {
+    content: "";
     position: absolute;
-    left: 1.5rem;
-    content: "o";
+    left: 1.2rem;
+    padding: 0.15rem;
+    mask-image: url("../img/open-arrow.svg");
+    width: 15px;
+    height: 15px;
+    mask-position: center;
+    mask-size: cover;
     display: inline;
-    color: var(--colour-ui-backer-dark);
+    background-color: var(--colour-ui-backer-dark);
 }
 
 @media (max-width: 600px) {
@@ -148,4 +164,28 @@
 .icon:hover {
     background-color: var(--colour-interaction-accent-backer);
     cursor: pointer;
+}
+
+.dropdown-holder {
+    position: relative;
+}
+
+.dropdown-content {
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    width: 150px;
+    right: 0;
+    top: 2.25rem;
+    gap: 7px;
+
+    padding: 1rem;
+    border-radius: 0.5rem;
+
+    background-color: var(--colour-ui-backer-light);
+    outline: 1px solid var(--colour-ui-backer-border);
+}
+
+.dropdown-content.active {
+    display: flex;
 }

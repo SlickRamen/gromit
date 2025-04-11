@@ -1,27 +1,32 @@
 
 <div class="project-container" id="projectPane" style="display: none; padding-left: 2rem">
   <div class="nav-block">
-    <div class="lay-column three" style="min-width: 300px; max-width: 300px">
-      <span class="title" id="projectTitle">a project</span>
-      <span class="title" id="projectId" style="display: none"></span>
-      <span class="subheading">ver 0.0.1</span>
+    <div class="lay-column three" style="min-width: 300px;">
+      <div class="lay-row" style="width: 100%; align-items: center;">
+        <span class="title" id="projectTitle">A Project</span>
+        <div class="dropdown-holder" style="margin-left: auto;  margin-right: 1rem;">
+          <a class="options-button cancel icon-options use-line-height" onclick="toggleEditDropdown()"></a>
+          <div class="dropdown-content" id="editDropdown">
+            <a class="bold-button spaced cancel" id="editButton">Edit<i class="icon-edit" style="font-size: 1.5rem;"></i></a>
+            <a class="bold-button spaced warning" id="deleteButton">Delete<i class="icon-trashcan" style="font-size: 1.5rem;"></i></a>
+          </div>
+        </div>
+      </div>
+      <span id="projectId" style="display: none"></span>
+      <span>A Gromit project</span>
     </div>
   </div>
   <div class="page-content">
     <div class="tabs-block">
-      <a class="bold-button fit accent">glyphs</a>
-      <a class="bold-button fit cancel">playground</a>
-      <a class="bold-button fit cancel">export</a>
+      <a class="bold-button fit accent">Glyphs<i class="icon-edit" style="margin-left: 0.25rem; font-size: 1.5rem;"></i></a>
+      <a class="bold-button fit cancel">Playground<i class="icon-calendar" style="margin-left: 0.25rem; font-size: 1.5rem;"></i></a>
+      <a class="bold-button fit cancel" id="generateButton">Export Iconfont<i class="icon-redirect" style="margin-left: 0.25rem; font-size: 1.5rem;"></i></a>
     </div>
 
     <hr>
 
-    <span class="heading">a project > glyphs</span>
-
     <div class="button-tray">
-      <a class="bold-button fit accent" onclick="uploadIcons()">add glyph</a>
-      <a class="bold-button fit cancel" id="generateButton">generate font</a>
-      <a class="bold-button fit warning" id="status">status</a>
+      <a class="bold-button fit accent" onclick="uploadIcons()">Add Glyph<i class="icon-add" style="margin-left: 0.25rem; font-size: 1.5rem;"></i></a>
     </div>
 
 
@@ -33,14 +38,22 @@
     <script src="../../public/js/project-icons.js"></script>
 
     <script>
+      function toggleEditDropdown() {
+        const dropdown = document.getElementById('editDropdown');
+
+        if (dropdown.classList.contains('active')) {
+          dropdown.classList.remove('active')
+        } else {
+          dropdown.classList.add('active')
+        }
+      }
+
       document.getElementById("generateButton").addEventListener("click", async () => {
         const projectId = document.getElementById("projectId").textContent;
         if (!projectId) {
           alert("Please enter a project ID!");
           return;
         }
-
-        document.getElementById("status").innerText = "Generating...";
 
         try {
           const response = await fetch("http://localhost:3000/generate-font", {
@@ -51,12 +64,12 @@
 
           const result = await response.json();
           if (result.success) {
-            document.getElementById("status").innerText = "✅ " + result.message;
+            console.log("Success!");
           } else {
-            document.getElementById("status").innerText = "❌ Error: " + result.error;
+            console.log("Something went wrong! " + JSON.stringify(result.error));
           }
         } catch (error) {
-          document.getElementById("status").innerText = "❌ Request failed.";
+          console.log(error);
         }
       });
     </script>

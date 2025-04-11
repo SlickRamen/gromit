@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     const itemRep = document.createElement("div");
                     itemRep.className = "project-item";
                     itemRep.textContent = `${item.name.split(".")[0]}`;
-                    itemRep.style.backgroundImage = `url(${item.src})`;
+                    itemRep.style.backgroundImage = `url(${item.data})`;
                     itemList.appendChild(itemRep);
                     id += 1;
                 })
@@ -106,7 +106,7 @@ function loadProjectDetails(id) {
                 document.getElementById("infoPane").style.display = "none";
                 document.getElementById("projectPane").style.display = "block";
 
-                document.getElementById("projectTitle").textContent = project.name;
+                document.getElementById("projectTitle").innerHTML = `<i class="icon-folder" style="margin-right: 0.5rem; font-size: 2rem;"></i>${project.name}`;
                 document.getElementById("projectId").textContent = project.id;
 
                 await loadIcons(project.id);

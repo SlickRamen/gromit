@@ -34,7 +34,6 @@ function toggleProject(projectElement, forceClose) {
     if ((items.style.display === "none" || items.style.display === "") && !forceClose) {
         items.style.display = "flex";
         projectElement.classList.add("active");
-
     } else {
         items.style.display = "none";
         projectElement.classList.remove("active");

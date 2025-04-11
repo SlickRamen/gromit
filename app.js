@@ -199,8 +199,6 @@ server.get("/projects/:id", (req, res) => {
   const projects = loadProjects(); // Load projects from file
   const project = projects.find(p => p.id == req.params.id);
 
-  console.log(project.name);
-
   if (!project) {
     return res.status(404).json({ error: "Project not found" });
   }
@@ -249,6 +247,7 @@ server.listen(PORT, () => {
       height: 600,
       minWidth: 600,
       minHeight: 400,
+      icon: path.join(__dirname, 'public/img', 'favicon.ico'),
       webPreferences: {
         nodeIntegration: true
       }
